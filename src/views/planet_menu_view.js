@@ -21,8 +21,8 @@ PlanetMenuView.prototype.populate = function(planets){
     planetLink.classList.add('planet-menu-item');
     planetLink.innerText = planet.name;
     this.menu.appendChild(planetLink);
-  })
-}
+  });
+};
 
 
 
