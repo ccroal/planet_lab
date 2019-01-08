@@ -8,6 +8,10 @@ PlanetMenuView.prototype.bindEvents = function(){
   PubSub.subscribe('SolarSystem:all-planets', (event) => {
     this.populate(event.detail);
   });
+  this.menu.addEventListener('click', (event) => {
+    const selectedPlanet = event.target.id;
+    PubSub.publish('PlanetMenuView:planet-selected', selectedPlanet)
+  });
 };
 
 PlanetMenuView.prototype.populate = function(planets){
@@ -15,7 +19,7 @@ PlanetMenuView.prototype.populate = function(planets){
     const planetLink = document.createElement('a');
     planetLink.id = planet.name;
     planetLink.classList.add('planet-menu-item');
-    planetLink.innerTest = planet.name;
+    planetLink.innerText = planet.name;
     this.menu.appendChild(planetLink);
   })
 }
